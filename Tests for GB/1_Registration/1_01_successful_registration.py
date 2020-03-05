@@ -81,8 +81,9 @@ try:
     assert "© 2010 - 2020 Geekbrains." == new_page_conf_coun_right_text
 
     # добавить проверку, что есть ссылка на пользовательское соглашение
+    # css selector = div.confirm-page__footer-wrapper-item:nth-child(2)
 
     # добавить проверку, что есть ссылка на политику конфиденциальности
-
+    # css selector = div.confirm-page__footer-wrapper-item:nth-child(3)
 finally:
     browser.quit()
