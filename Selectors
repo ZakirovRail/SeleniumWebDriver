@@ -1,0 +1,275 @@
+CSS selectors
+
+Поиск по id
+$ #bullet
+
+Поиск по tag
+$ img
+
+Поиск по значению атрибута
+$ [id="bullet"]
+
+Поиск по name
+$ [name="bullet-cat"]
+
+Поиск по class
+$ [class="jumbotron-heading"]
+$ .jumbotron-heading
+
+
+
+
+
+Example_1
+
+<article id="moto" class="lead text-muted" title="one-thing" name="moto">If there's one
+thing that the internet was made for, it's funny cat memes.</article>
+
+$ [class="lead text-muted"]  (NOT [class="lead"] or [class="text-muted lead"] )
+$ .lead (NOT .Lead)
+$ .lead.text-muted
+$ .text-muted.lead
+
+
+
+
+
+
+Example_2
+
+<div id="posts" class="post-list">
+  <div id="post1" class="item">
+    <div class="title">Как я провел лето</div>
+    <img src="./images/summer.png">
+  </div>
+  <div id="post2" class="item">
+    <div class="title second">Ходили купаться</div>
+    <img src="./images/bad_dog.jpg">
+  </div>
+  <div id="post3" class="item">
+    <div class="title">С друзьями</div>
+    <img src="./images/friends.jpg">
+  </div>
+</div>
+
+
+Ходили купаться
+
+$ #post2 .title (NOT #post2.title)
+$ #post2 > div.title OR #post2>div.title
+$ #posts > .item:nth-child(2) > .title
+$ .title.second
+
+=======================================================================================================================
+XPath
+
+XPath запрос всегда начинается с символа / или //
+Символ / аналогичен символу > в CSS-селекторе, а символ // - пробелу. Их смысл:
+
+el1/el2 - выбирает элементы el2, являющиеся прямыми потомками el1;
+el1//el2 - выбирает элементы el2, являющиеся потомками el1 любой степени вложенности.
+
+
+Символ [ ] - это команда фильтрации:
+
+1. по любому атрибуту, будь то id, class, title (или любой другой):
+$ //img[@id='bullet']
+
+2. по порядковому номеру:
+$ //div[@class="row"]/div[2]
+
+3. по полному совпадению текста:
+$ //p[text()="Lenin cat"]
+
+4. по частичному совпадению текста или атрибута:
+$ //p[contains(text(), "cat")]
+
+булевы операции (and, or, not):
+//img[@name='bullet-cat' and @data-type='animal']
+
+
+
+Символ * - команда выбора всех элементов:
+Например можем найти текст в заголовке запросом //div/*[@class="jumbotron-heading"].
+Это может быть удобно, когда мы не знаем точно тег элемента, который ищем.
+
+
+
+Example_3
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Look at my favorite cat memes:</h1>
+  <p>If there's one thing that the internet was made for, it's funny cat memes.</p>
+  <div class = "column">
+      <div class="card-body">
+          <img class="picture" src="https://www.dailydot.com/wp-content/uploads/2018/10/olli-the-polite-cat.jpg">
+          <h3 id="polite"> Polite cat </h3>
+          <p data-type="description"> Nice cat </p>
+      	  <div class="btn-group">
+	          <button type="button" class="btn btn-sm">View</button>
+	          <button type="button" class="btn btn-sm">Edit</button>
+	      </div>
+      </div>
+      <div class="card-body">
+          <img class="picture" src="https://i.kym-cdn.com/photos/images/newsfeed/001/328/469/2a0.jpg">
+          <h3 id="banana"> Banana cat </h3>
+          <div class="btn-group">
+	          <button type="button" class="btn btn-sm">View</button>
+	          <button type="button" class="btn btn-sm">Edit</button>
+          </div>
+      </div>
+   <div class="card-body">
+      <img class="picture" src="https://i.redd.it/vnpkq1rk31811.jpg">
+      <h3 id="melon"> Watermelon cat </h3>
+      <div class="btn-group">
+	      <button type="button" class="btn btn-sm">View</button>
+	      <button type="button" class="btn btn-sm">Edit</button>
+	  </div>
+   </div>
+</div>
+</body>
+</html>
+
+#polite{
+    color:blue;
+}
+
+
+img {
+	height: 100px;
+}
+.card-body {
+    width: 200px;
+    border= 1px;
+    border: 1px solid rgba(0,0,0,.125);
+    padding-right: 15px;
+    padding-left: 15px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.btn-group {
+    margin-bottom: 10px;
+}
+
+
+.column {
+	display: flex;
+}
+body {
+    color: black;
+}
+
+
+
+Example_4
+<!DOCTYPE html>
+<html>
+<body>
+  <h1 data-type="description">Look at my favorite cat memes:</h1>
+  <p>If there's one thing that the internet was made for, it's funny cat memes.</p>
+  <div class = "column">
+      <div class="card-body">
+          <img class="picture" src="https://www.dailydot.com/wp-content/uploads/2018/10/olli-the-polite-cat.jpg">
+          <h3 id="polite"> Polite cat </h3>
+          <p data-type="description"> Nice cat </p>
+      	  <div class="btn-group">
+	          <button type="button" class="btn btn-sm">View</button>
+	          <button type="button" class="btn btn-sm">Edit</button>
+	      </div>
+      </div>
+      <div class="card-body">
+          <img class="picture" src="https://i.kym-cdn.com/photos/images/newsfeed/001/328/469/2a0.jpg">
+          <h3 id="banana"> Banana cat </h3>
+          <div class="btn-group">
+	          <button type="button" class="btn btn-sm">View</button>
+	          <button type="button" class="btn btn-sm">Edit</button>
+          </div>
+      </div>
+   <div class="card-body">
+      <img class="picture" src="https://i.redd.it/vnpkq1rk31811.jpg">
+      <h3 id="melon"> Watermelon cat </h3>
+      <div class="btn-group">
+	      <button type="button" class="btn btn-sm">View</button>
+	      <button type="button" class="btn btn-sm">Edit</button>
+	  </div>
+   </div>
+</div>
+</body>
+</html>
+
+
+
+p[data-type]{
+    color:blue;
+}
+
+img {
+	height: 100px;
+}
+.card-body {
+
+    width: 200px;
+    border= 1px;
+    border: 1px solid rgba(0,0,0,.125);
+    padding-right: 15px;
+    padding-left: 15px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.btn-group {
+    margin-bottom: 10px;
+}
+
+
+.column {
+	display: flex;
+}
+
+body {
+    color: black;
+}
+
+
+
+
+
+      <div name="banana" class="card-body">
+          <img class="picture" src="https://i.kym-cdn.com/photos/images/newsfeed/001/328/469/2a0.jpg">
+          <h3 id="banana"> Banana cat </h3>
+          <p class="description"> Cat doesn't like bananas!</p>
+          <div class="btn-group">
+	          <button type="button" class="btn btn-sm">View</button>
+	          <button type="button" class="btn btn-sm">Edit</button>
+          </div>
+      </div>
+
+Задание  - выделить синим цветом  <button type="button" class="btn btn-sm">Edit</button>
+
+[name="banana"].card-body .btn-group button:nth-child(2)
+
+div[name=banana] div.btn-group button:nth-child(2)
+div[name="banana"] .btn-group :nth-child(2)
+
+.card-body:nth-child(2) button:nth-of-type(2)
+.card-body:nth-child(2) .btn:nth-child(2)
+
+[name="banana"] button:nth-child(2)
+[name="banana"] .btn:nth-child(2)
+[name="banana"] .btn-group button.btn:nth-child(2)
+[name=banana] > .btn-group > button:nth-child(2n)
+[name="banana"] > .btn-group > button:nth-child(2)
+[name=banana]:nth-child(2) > div.btn-group :nth-child(2)
+[name="banana"] button:nth-child(2)
+#banana + p + div.btn-group > :nth-child(2)
+
+
+
