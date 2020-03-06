@@ -51,20 +51,20 @@ try:
     time.sleep(3)
     new_page_conf = browser.find_element_by_class_name("confirm-page__body-item-title")
     new_page_conf_text = new_page_conf.text
-    assert "Активируйте аккаунт!" == new_page_conf_text
+    assert "Активируйте аккаунт!" == new_page_conf_text, "Отсутствует или не верен элемент 'Активируйте аккаунт!'"
 
     new_page_conf_long = browser.find_element_by_class_name("confirm-page__body-item-text")
     new_page_conf_long_text = new_page_conf_long.text
-    assert "Чтобы окунуться в море полезных материалов об IT и digital, найдите письмо от GeekBrains в своем почтовом ящике и перейдите по ссылке" == new_page_conf_long_text
+    assert "Чтобы окунуться в море полезных материалов об IT и digital, найдите письмо от GeekBrains в своем почтовом ящике и перейдите по ссылке" == new_page_conf_long_text, "Отсутствует или не верен элемент 'Чтобы окунуться в море полезных материалов...'"
 
     new_page_conf_question = browser.find_element_by_css_selector(".confirm-page__body-item-text-help p")
     new_page_conf_question_text = new_page_conf_question.text
-    assert "Не получили письмо?" == new_page_conf_question_text
+    assert "Не получили письмо?" == new_page_conf_question_text, "Отсутствует или не верен  элемент 'Не получили письмо?'"
 
     # new_page_conf_link = browser.find_element_by_css_selector(".text-primary href='//confirmation//new'")
     new_page_conf_link = browser.find_element_by_link_text("Отправить повторно")
     new_page_conf_link_text = new_page_conf_link.text
-    assert "Отправить повторно" == new_page_conf_link_text
+    assert "Отправить повторно" == new_page_conf_link_text, "Отсутствует кнопка 'Отправить повторно'"
 
     # надо добавить проверку наличия Лого со ссылкой на главную страницу
     new_page_conf_counter = browser.find_element_by_class_name("header-tel-number")
@@ -73,12 +73,12 @@ try:
 
     new_page_conf_coun_txt = browser.find_element_by_class_name("header-tel-info")
     new_page_conf_coun_txt_text = new_page_conf_coun_txt.text
-    assert "Человек уже с нами" == new_page_conf_coun_txt_text
+    assert "Человек уже с нами" == new_page_conf_coun_txt_text, "Отсутствует или не верен элемент 'Человек уже с нами'"
 
     new_page_conf_coun_right = browser.find_element_by_css_selector(
         "div.confirm-page__footer-wrapper-item:nth-child(1)")
     new_page_conf_coun_right_text = new_page_conf_coun_right.text
-    assert "© 2010 - 2020 Geekbrains." == new_page_conf_coun_right_text
+    assert "© 2010 - 2020 Geekbrains." == new_page_conf_coun_right_text, "Отсутствует или не верен элемент '© 2010 - 2020 Geekbrains.'"
 
     # добавить проверку, что есть ссылка на пользовательское соглашение
     # css selector = div.confirm-page__footer-wrapper-item:nth-child(2)
