@@ -24,7 +24,14 @@ By.PARTIAL_LINK_TEXT – поиск ссылки по частичному со�
 
 
 
-
+способ для поиска элементов с помощью универсального метода find_elements() и полей класса By из библиотеки selenium.
+find_elements_by_css_selector;
+find_elements_by_xpath;
+find_elements_by_name;
+find_elements_by_tag_name;
+find_elements_by_class_name;
+find_elements_by_link_text;
+find_elements_by_partial_link_text.
 
 
 

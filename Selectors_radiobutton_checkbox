@@ -1,0 +1,128 @@
+Оба этих элемента создаются при помощи тега input со значением атрибута type равным checkbox или radio
+соответственно. В html-коде страницы вы увидите:
+<input type="checkbox">
+<input type="radio">
+
+
+
+Если checkbox или radiobutton выбран, то у элемента появится новый атрибут checked без значения
+<input type="checkbox" checked>
+<input type="radio" checked>
+
+
+
+Radiobuttons объединяются в группу, где все элементы имеют одинаковые значения атрибута name,
+но разные значения атрибута value:
+<input type="radio" name="language" value="python" checked>
+<input type="radio" name="language" value="selenium"
+
+
+
+
+Чтобы снять/поставить галочку в элементе типа checkbox или выбрать опцию из группы radiobuttons,
+надо указать WebDriver метод поиска элемента и выполнить для найденного элемента метод click():
+option1 = browser.find_element_by_css_selector("[value='python']")
+option1.click()
+
+
+
+
+Также вы можете увидеть тег label рядом с input. Этот тег используется, чтобы сделать кликабельным текст,
+который отображается рядом с флажком. Этот текст заключен внутри тега label. Элемент label связывается
+с элементом input с помощью атрибута for, в котором указывается значение атрибута id для элемента input:
+
+=======================================================================================================================
+Example 1:
+<div>
+  <input type="radio" id="python" name="language" checked>
+  <label for="python">Python</label>
+</div>
+<div>
+  <input type="radio" id="java" name="language">
+  <label for="java">Java</label>
+</div>
+
+
+option1 = browser.find_element_by_css_selector("[for='python']")
+option1.click()
+
+=======================================================================================================================
+Example 2:
+<input class="check-input" type="radio" name="ruler" id="peopleRule" value="people" checked>
+
+
+people_radio = browser.find_element_by_id("peopleRule")
+Найдём атрибут "checked" с помощью встроенного метода get_attribute и проверим его значение:
+people_checked = people_radio.get_attribute("checked")
+print("value of people radio: ", people_checked)
+assert people_checked is not None, "People radio is not selected by default"
+
+Мы можем написать проверку другим способом, сравнив строки:
+assert people_checked == "true", "People radio is not selected by default"
+
+
+Если атрибута нет, то метод get_attribute вернёт значение None. Применим метод get_attribute ко
+второму radiobutton, и убедимся, что атрибут отсутствует:
+robots_radio = browser.find_element_by_id("robotsRule")
+robots_checked = robots_radio.get_attribute("checked")
+assert robots_checked is None
+
+
+
+=======================================================================================================================
+Example 3:
+<label for="dropdown">Выберите язык программирования:</label>
+<select id="dropdown" class="custom-select">
+ <option selected>--</option>
+ <option value="1">Python</option>
+ <option value="2">Java</option>
+ <option value="3">JavaScript</option>
+</select>
+
+
+browser.find_element_by_tag_name("select").click()
+browser.find_element_by_css_selector("option:nth-child(2)").click()
+
+Последняя строчка может выглядеть и так:
+browser.find_element_by_css_selector("[value='1']").click()
+
+
+можно найти любой вариант из списка с помощью метода select_by_value(value):
+from selenium.webdriver.support.ui import Select
+select = Select(browser.find_element_by_tag_name("select"))
+select.select_by_value("1") # ищем элемент с текстом "Python"
+
+Можно использовать еще два метода: select.select_by_visible_text("text") и select.select_by_index(index).
+Первый способ ищет элемент по видимому тексту, например, select.select_by_visible_text("Python")
+найдёт "Python" для нашего примера.
+
+Второй способ ищет элемент по его индексу или порядковому номеру. Индексация начинается с нуля.
+Для того чтобы найти элемент с текстом "Python", нужно использовать select.select_by_index(1),
+так как опция с индексом 0 в данном примере имеет значение по умолчанию равное "--".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -253,15 +253,11 @@ body {
       </div>
 
 Задание  - выделить синим цветом  <button type="button" class="btn btn-sm">Edit</button>
-
 [name="banana"].card-body .btn-group button:nth-child(2)
-
 div[name=banana] div.btn-group button:nth-child(2)
 div[name="banana"] .btn-group :nth-child(2)
-
 .card-body:nth-child(2) button:nth-of-type(2)
 .card-body:nth-child(2) .btn:nth-child(2)
-
 [name="banana"] button:nth-child(2)
 [name="banana"] .btn:nth-child(2)
 [name="banana"] .btn-group button.btn:nth-child(2)
