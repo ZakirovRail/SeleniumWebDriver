@@ -1,0 +1,7 @@
+# номер 1
+def main_page_buttons(browser):
+    print("Passed номер 1")
+
+# номер 2
+def test_main_page_navbar(browser):
+    print("Passed номер 2")
