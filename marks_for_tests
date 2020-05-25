@@ -88,8 +88,35 @@ pytest -s -v -m "smoke and win10" test_fixture81.py
 
 ------------------------------------------------------------------------------------------------------------------------
 
+XFail: помечать тест как ожидаемо падающий
+
+$ pytest -v test_fixture10.py
+
+@pytest.mark.xfail(reason="fixing this bug right now")
+    def test_guest_should_see_search_button_on_the_main_page(self, browser):
+        browser.get(link)
+        browser.find_element_by_css_selector("button.favorite"
+
+Когда баг починят, мы это узнаем, ﻿﻿так как теперь тест будет отмечен как XPASS
+(“unexpectedly passing” - неожиданно проходит). После этого маркировку xfail для теста можно удалить.
+Кстати, к маркировке xfail можно добавлять параметр reason. Чтобы увидеть это сообщение в консоли,
+при запуске нужно добавлять параметр pytest -rx.
+
+$ pytest -rx -v test_fixture10a.py
+------------------------------------------------------------------------------------------------------------------------
+
+Запустите тесты. Здесь мы добавили символ X в параметр -r, чтобы получить подробную информацию по XPASS-тестам:
+$ pytest -rX -v test_fixture10b.py
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 
 https://docs.pytest.org/en/latest/skipping.html
 
 
+pytest -s -v -m "smoke and regression" --browser_name=firefox test_login.py

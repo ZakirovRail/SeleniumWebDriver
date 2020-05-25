@@ -21,6 +21,7 @@ try:
     browser.execute_script("return arguments[0].scrollIntoView(true);", checkbox)
     checkbox.click()
 
+
     browser.find_element_by_id("robotsRule").click()
     browser.find_element_by_css_selector(".btn.btn-primary").click()
 

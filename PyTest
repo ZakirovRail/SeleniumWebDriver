@@ -85,6 +85,14 @@ https://github.com/JakUi/stepik-auto-tests-course/blob/master/%D0%A4%D0%B8%D0%BA
 
 -----------------------------------------------------------------------------------------------------------------------
 https://docs.pytest.org/en/latest/fixture.html
+https://habr.com/ru/post/269759/
+https://medium.com/@dmrlx/%D0%B2%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-pytest-cc6175c7d0dc
+https://docs.pytest.org/en/latest/
+https://docs.pytest.org/en/latest/goodpractices.html#conventions-for-python-test-discovery
+https://gist.github.com/amatellanes/12136508b816469678c2
 
 
-
+Тестирование веб-приложений
+https://realpython.com/python-testing/
+https://habr.com/ru/post/358950/
+https://docs.python.org/3/library/unittest.html
